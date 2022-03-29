@@ -6,6 +6,8 @@ import Landing from '../features/onboarding/landing/landing.screen';
 import Login from '../features/onboarding/login/login.screen';
 import Phone from '../features/onboarding/phone/phone.screen';
 import Confirm from '../features/onboarding/confirm/confirm.screen';
+import Confirmed from '../features/onboarding/confirmed/confirm/confirmed.screen';
+
 const Stack = createNativeStackNavigator();
 
 const rootContainer = () => {
@@ -19,6 +21,7 @@ const rootContainer = () => {
         <Stack.Screen name="login" component={Login} />
         <Stack.Screen name="phone" component={Phone} />
         <Stack.Screen name="confirm" component={Confirm} />
+        <Stack.Screen name="confirmed" component={Confirmed} />
       </Stack.Navigator>
     </NavigationContainer>
   );

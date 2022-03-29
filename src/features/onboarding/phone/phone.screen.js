@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import styles from './phone.styles';
 import Header from '../login/components/header';
+import {Auth} from 'aws-amplify';
 
 class Phone extends React.Component {
   constructor(props) {
@@ -33,9 +34,20 @@ class Phone extends React.Component {
       canGo,
     });
   };
-  submit = () => {
+  submit = async () => {
     if (this.state.canGo) {
-      this.props.navigation.navigate('confirm');
+      try {
+        const {user} = await Auth.signUp({
+          username: '+33' + this.state.phone,
+          password: 'Azerty1234!',
+        });
+        console.log('utilisateur créé:', user);
+        this.props.navigation.navigate('confirm', {
+          phone: this.state.phone,
+        });
+      } catch (error) {
+        console.log('error signing up:', error);
+      }
     }
   };
   render() {
